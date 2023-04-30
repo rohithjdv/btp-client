@@ -40,7 +40,10 @@ function Navbar() {
           sx={{ "&:hover": { cursor: "pointer" } }}
           color={shades.secondary[500]}
         >
-          ECOMMER
+          <img
+            src={require("../../assets/logos/L-kart-logos_black.png")}
+            width="120px"
+          />
         </Box>
         <Box
           display="flex"

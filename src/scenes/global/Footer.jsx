@@ -24,14 +24,8 @@ function Footer() {
             mb="30px"
             color={shades.secondary[500]}
           >
-            ECOMMER
+            L-KART
           </Typography>
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat
-          </div>
         </Box>
 
         <Box>
@@ -59,12 +53,11 @@ function Footer() {
             Contact Us
           </Typography>
           <Typography mb="30px">
-            50 north Whatever Blvd, Washington, DC 10501
+            IIT Kharagpur, West Bengal, India - 721302
           </Typography>
           <Typography mb="30px" sx={{ wordWrap: "break-word" }}>
-            Email: mredwardroh@gmail.com
+            Email: lkart@gmail.com
           </Typography>
-          <Typography mb="30px">(222)333-4444</Typography>
         </Box>
       </Box>
     </Box>

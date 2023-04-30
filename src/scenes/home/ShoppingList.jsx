@@ -20,10 +20,11 @@ const ShoppingList = () => {
 
   async function getItems() {
     const items = await fetch(
-      "http://localhost:1337/api/items?populate=image",
+      `https://dark-rough-curtain.strapiapp.com/api/items?populate=image`,
       { method: "GET" }
     );
     const itemsJson = await items.json();
+    console.log("itemsJson ", itemsJson);
     dispatch(setItems(itemsJson.data));
   }
 
@@ -61,9 +62,9 @@ const ShoppingList = () => {
         }}
       >
         <Tab label="ALL" value="all" />
-        <Tab label="NEW ARRIVALS" value="newArrivals" />
-        <Tab label="BEST SELLERS" value="bestSellers" />
-        <Tab label="TOP RATED" value="topRated" />
+        <Tab label="MAHARASHTRA" value="newArrivals" />
+        <Tab label="WEST BENGAL" value="bestSellers" />
+        <Tab label="TELANGANA" value="topRated" />
       </Tabs>
       <Box
         margin="0 auto"

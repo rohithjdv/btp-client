@@ -65,10 +65,10 @@ const CartMenu = () => {
                 <FlexBox p="15px 0">
                   <Box flex="1 1 40%">
                     <img
-                      alt={item?.name}
+                      alt={item?.attributes.name}
                       width="123px"
                       height="164px"
-                      src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                      src={item?.attributes.image}
                     />
                   </Box>
                   <Box flex="1 1 60%">
@@ -108,7 +108,7 @@ const CartMenu = () => {
                         </IconButton>
                       </Box>
                       <Typography fontWeight="bold">
-                        ${item.attributes.price}
+                        ₹{item.attributes.price}
                       </Typography>
                     </FlexBox>
                   </Box>
@@ -122,7 +122,7 @@ const CartMenu = () => {
           <Box m="20px 0">
             <FlexBox m="20px 0">
               <Typography fontWeight="bold">SUBTOTAL</Typography>
-              <Typography fontWeight="bold">${totalPrice}</Typography>
+              <Typography fontWeight="bold">₹{totalPrice}</Typography>
             </FlexBox>
             <Button
               sx={{

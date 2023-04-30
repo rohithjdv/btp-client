@@ -25,7 +25,7 @@ const ItemDetails = () => {
 
   async function getItem() {
     const item = await fetch(
-      `http://localhost:1337/api/items/${itemId}?populate=image`,
+      `https://dark-rough-curtain.strapiapp.com/api/items/${itemId}?populate=image`,
       {
         method: "GET",
       }
@@ -36,7 +36,7 @@ const ItemDetails = () => {
 
   async function getItems() {
     const items = await fetch(
-      `http://localhost:1337/api/items?populate=image`,
+      `https://dark-rough-curtain.strapiapp.com/api/items?populate=image`,
       {
         method: "GET",
       }
@@ -56,10 +56,10 @@ const ItemDetails = () => {
         {/* IMAGES */}
         <Box flex="1 1 40%" mb="40px">
           <img
-            alt={item?.name}
+            alt={item?.attributes?.name}
             width="100%"
             height="100%"
-            src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+            src={item?.attributes?.image}
             style={{ objectFit: "contain" }}
           />
         </Box>
@@ -73,7 +73,7 @@ const ItemDetails = () => {
 
           <Box m="65px 0 25px 0">
             <Typography variant="h3">{item?.attributes?.name}</Typography>
-            <Typography>${item?.attributes?.price}</Typography>
+            <Typography>₹{item?.attributes?.price}</Typography>
             <Typography sx={{ mt: "20px" }}>
               {item?.attributes?.longDescription}
             </Typography>

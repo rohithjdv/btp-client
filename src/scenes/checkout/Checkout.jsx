@@ -6,13 +6,15 @@ import * as yup from "yup";
 import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";
-import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
+// import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(
-  "pk_test_51LgU7yConHioZHhlAcZdfDAnV9643a7N1CMpxlKtzI1AUWLsRyrord79GYzZQ6m8RzVnVQaHsgbvN1qSpiDegoPi006QkO0Mlc"
-);
+// const stripePromise = loadStripe(
+//   "pk_test_51LgU7yConHioZHhlAcZdfDAnV9643a7N1CMpxlKtzI1AUWLsRyrord79GYzZQ6m8RzVnVQaHsgbvN1qSpiDegoPi006QkO0Mlc"
+// );
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector((state) => state.cart.cart);
   const isFirstStep = activeStep === 0;
@@ -37,7 +39,7 @@ const Checkout = () => {
   };
 
   async function makePayment(values) {
-    const stripe = await stripePromise;
+    // const stripe = await stripePromise;
     const requestBody = {
       userName: [values.firstName, values.lastName].join(" "),
       email: values.email,
@@ -46,16 +48,20 @@ const Checkout = () => {
         count,
       })),
     };
-
-    const response = await fetch("http://localhost:1337/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
-    });
+    
+    const response = await fetch(
+      `https://dark-rough-curtain.strapiapp.com/api/orders`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      }
+    );
     const session = await response.json();
-    await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
+    navigate("/checkout/success");
+    // await stripe.redirectToCheckout({
+    //   sessionId: session.id,
+    // });
   }
 
   return (
